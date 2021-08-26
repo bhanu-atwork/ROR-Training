@@ -1,0 +1,10 @@
+# Write a program to find frequency of an element from an array
+def freq_map(arr, ele)
+   # Setting Default value as 0 for each key
+  freq = Hash.new(0)
+  # Iterate over each element and if present increment by 1 
+  arr.each { |ele| freq[ele] += 1 }
+  freq[ele]
+end
+  
+puts freq_map(['a', 'a', 'b', 'a'], 'a')
