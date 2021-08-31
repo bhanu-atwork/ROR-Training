@@ -11,8 +11,12 @@ class JsonFilehandler
 
     File.open(path, "w+") do |f|
       f.write("[\n")
-      res.each do |click| 
-        result = '{' + click.map { |k, v| "#{k.to_json}:#{v.to_json}" }.join(', ') + "},\n"
+      res.each_with_index do |click, idx|
+        if idx != res.size-1
+         result = '{' + click.map { |k, v| "#{k.to_json}:#{v.to_json}" }.join(', ') + "},\n"
+        else
+          result = '{' + click.map { |k, v| "#{k.to_json}:#{v.to_json}" }.join(', ') + "}\n"
+        end
         f.write(result)
       end
       f.write("]")
