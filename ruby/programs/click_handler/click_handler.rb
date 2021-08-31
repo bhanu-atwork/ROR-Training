@@ -57,7 +57,7 @@ class Parser
           next
         elsif ip_amt_per_period[click["ip"]].key?(period) && ip_amt_per_period[click["ip"]][period] == click["amount"]
           ip_timestamp_per_period[click["ip"]][period] = DateTime.parse(click["timestamp"]) < DateTime.parse(ip_timestamp_per_period[click["ip"]][period]) ?
-           click["timestamp"] : ip_timestamp_per_period[click["ip"]]
+           click["timestamp"] : ip_timestamp_per_period[click["ip"]][period]
         else
           ip_amt_per_period[click["ip"]].merge!({period => click["amount"]})
           ip_timestamp_per_period[click["ip"]].merge!({period => click["timestamp"]})
